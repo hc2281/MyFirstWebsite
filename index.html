@@ -1,11 +1,59 @@
-<!DOCTYPE html> 
-<html lang="en">
-<head>
+<!doctype html>
+<!--
+ @license
+ Copyright 2019 Google LLC. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+-->
+<html lang="ja">
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>私の足跡</title>
-</head>
-<body>
-    <iframe width="100%" height="900" src="Myfootprints.html" frameborder="0" allowfullscreen="true"></iframe>
-</body>
+
+    <!-- 引入 CSS 文件 -->
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div id="title">
+      <h1>見てみよう、私の足跡</h1>
+      <p>このウェブサイトは、私が訪れた国々を記録するために作成されました。</p>
+    </div>
+
+    <!-- 地图的 div 元素 -->
+    <div id="map"></div>
+
+    <!-- 引入 Google Maps 的 JS 脚本 -->
+    <script>
+      (g => {
+        var h, a, k, p = "The Google Maps JavaScript API",
+          c = "google",
+          l = "importLibrary",
+          q = "__ib__",
+          m = document,
+          b = window;
+        b = b[c] || (b[c] = {});
+        var d = b.maps || (b.maps = {}),
+          r = new Set,
+          e = new URLSearchParams,
+          u = () => h || (h = new Promise(async (f, n) => {
+            await (a = m.createElement("script"));
+            e.set("libraries", [...r] + "");
+            for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]);
+            e.set("callback", c + ".maps." + q);
+            a.src = `https://maps.${c}apis.com/maps/api/js?` + e;
+            d[q] = f;
+            a.onerror = () => h = n(Error(p + " could not load."));
+            a.nonce = m.querySelector("script[nonce]")?.nonce || "";
+            m.head.append(a);
+          }));
+        d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n))
+      })({
+        key: "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg",
+        v: "weekly"
+      });
+    </script>
+
+    <!-- 引入 JavaScript 文件 -->
+    <script src="script.js"></script>
+  </body>
 </html>
