@@ -1,48 +1,59 @@
-<!DOCTYPE html>
-<!-- saved from url=(0042)https://jsfiddle.net/Hanqin/1vb95sre/show/ -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    
-    <meta http-equiv="edit-Type" edit="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Add Map - JSFiddle</title>
+<!doctype html>
+<!--
+ @license
+ Copyright 2019 Google LLC. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+-->
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私の足跡</title>
 
-    <script type="text/javascript">
-      var slug = "1vb95sre"
+    <!-- 引入 CSS 文件 -->
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div id="title">
+      <h1>見てみよう、私の足跡</h1>
+      <p>このウェブサイトは、私が訪れた国々を記録するために作成されました。</p>
+    </div>
+
+    <!-- 地图的 div 元素 -->
+    <div id="map"></div>
+
+    <!-- 引入 Google Maps 的 JS 脚本 -->
+    <script>
+      (g => {
+        var h, a, k, p = "The Google Maps JavaScript API",
+          c = "google",
+          l = "importLibrary",
+          q = "__ib__",
+          m = document,
+          b = window;
+        b = b[c] || (b[c] = {});
+        var d = b.maps || (b.maps = {}),
+          r = new Set,
+          e = new URLSearchParams,
+          u = () => h || (h = new Promise(async (f, n) => {
+            await (a = m.createElement("script"));
+            e.set("libraries", [...r] + "");
+            for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]);
+            e.set("callback", c + ".maps." + q);
+            a.src = `https://maps.${c}apis.com/maps/api/js?` + e;
+            d[q] = f;
+            a.onerror = () => h = n(Error(p + " could not load."));
+            a.nonce = m.querySelector("script[nonce]")?.nonce || "";
+            m.head.append(a);
+          }));
+        d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n))
+      })({
+        key: "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg",
+        v: "weekly"
+      });
     </script>
 
-    <link rel="stylesheet" media="screen" href="./Add Map - JSFiddle_files/dist-standalone.css">
-    <link rel="icon" href="https://jsfiddle.net/img/favicon.png">
-  </head>
-  <body id="sylvester-standalone" data-new-gr-c-s-check-loaded="14.1199.0" data-gr-ext-installed="" data-gr-ext-disabled="forever">
-    <iframe name="result" allow="midi; geolocation; microphone; camera; display-capture; encrypted-media; clipboard-read; clipboard-write; notifications; payment-handler; persistent-storage; background-sync; ambient-light-sensor; accessibility-events; speaker-selection;" sandbox="allow-modals allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation allow-downloads" allowfullscreen="" allowpaymentrequest="" frameborder="0" src="./Add Map - JSFiddle_files/saved_resource.html">
-    </iframe>
-
-    <a class="toEditor" href="https://jsfiddle.net/Hanqin/1vb95sre/" target="_blank">
-      <svg height="20px" viewBox="0 0 46 33">
-        <g stroke-width="2.5" fill="none" fill-rule="evenodd">
-          <path d="M23.4888889,20.543316 C21.4404656,18.4187374 19.0750303,15.6666667 16.4832014,15.6666667 C13.8721947,15.6666667 11.7555556,17.6366138 11.7555556,20.0666667 C11.7555556,22.4967196 13.8721947,24.4666667 16.4832014,24.4666667 C18.8347252,24.4666667 19.9845474,23.0125628 20.6429148,22.312473" id="Oval-1" stroke-linecap="round"></path>
-          <path d="M22.5111111,19.5900174 C24.5595344,21.7145959 26.9249697,24.4666667 29.5167986,24.4666667 C32.1278053,24.4666667 34.2444444,22.4967196 34.2444444,20.0666667 C34.2444444,17.6366138 32.1278053,15.6666667 29.5167986,15.6666667 C27.1652748,15.6666667 26.0154526,17.1207706 25.3570852,17.8208603" id="Oval-1-Copy" stroke-linecap="round"></path>
-          <path d="M45,22.7331459 C45,19.1499462 42.7950446,16.079593 39.6628004,14.7835315 C39.6774469,14.5246474 39.7003932,14.2674038 39.7003932,14.0035978 C39.7003932,6.82243304 33.8412885,1 26.611593,1 C21.3985635,1 16.9102123,4.03409627 14.8051788,8.41527616 C13.7828502,7.62878013 12.503719,7.15547161 11.1134367,7.15547161 C7.77825654,7.15547161 5.07450503,9.84159999 5.07450503,13.1544315 C5.07450503,13.7760488 5.16938207,14.3779791 5.3477444,14.9418479 C2.74863428,16.4787471 1,19.2867709 1,22.5105187 C1,27.3287502 4.89630545,31.2367856 9.72803666,31.31094 L36.3341301,31.3109406 C41.1201312,31.3406346 45,27.4870665 45,22.7331459 L45,22.7331459 Z" stroke-linejoin="round"></path>
-        </g>
-      </svg>
-      Edit in JSFiddle
-    </a>
-
-    
-<!-- Google tag (gtag.js) -->
-<script async="" src="./Add Map - JSFiddle_files/js"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function analytics_jsf(){dataLayer.push(arguments);}
-  analytics_jsf("js", new Date());
-  analytics_jsf("config", "G-DG76L8EKG3", {
-    page_path:     "/[user]/[fiddle]/[embedded]/",
-    cookie_prefix: "jsfiddle",
-    
-  })
-</script>
-
-  
-
-<iframe id="BbMTckWD" frameborder="0" src="./Add Map - JSFiddle_files/translateSandbox.html" style="width: 0px; height: 0px; display: none;"></iframe></body></html>
+    <!-- 引入 JavaScript 文件 -->
+    <script src="script.js"></script>
+  </body>
+</html>
